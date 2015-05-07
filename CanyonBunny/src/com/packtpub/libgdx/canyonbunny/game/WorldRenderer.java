@@ -1,5 +1,6 @@
 package com.packtpub.libgdx.canyonbunny.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -29,6 +30,9 @@ public class WorldRenderer implements Disposable {
 	}
 
 	private void renderTestObjects() {
+
+		worldController.cameraHelper.applyTo(camera);
+
 		batch.setProjectionMatrix(camera.combined);
 //		The SpriteBatch class offers two methods called begin() and end() . 
 //		These methods are used to start and end a new batch of drawing commands.
