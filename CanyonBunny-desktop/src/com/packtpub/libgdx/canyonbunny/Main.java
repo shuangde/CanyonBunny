@@ -7,8 +7,8 @@ import com.badlogic.gdx.tools.imagepacker.TexturePacker2.Settings;
 
 public class Main {
 //	rebuildAtlas controls whether the atlas is rebuilt on startup or not by setting it to true or false .
-	private static boolean rebuildAtlas = true;
-	private static boolean drawDebugOutline = true;
+	private static boolean rebuildAtlas = false;
+	private static boolean drawDebugOutline = false;
 
 	public static void main(String[] args) {
 		if (rebuildAtlas) {
