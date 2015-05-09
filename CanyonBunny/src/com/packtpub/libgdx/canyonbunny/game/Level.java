@@ -14,8 +14,11 @@ public class Level {
 	public static final String TAG = Level.class.getName();
 
 	public enum BLOCK_TYPE {
-		EMPTY(0, 0, 0), ROCK(0, 255, 0), PLAYER_SPAWNPOINT(255, 255, 255), ITEM_FEATHER(
-				255, 0, 255), ITEM_GOLD_COIN(255, 255, 0);
+		EMPTY(0, 0, 0), 
+		ROCK(0, 255, 0), 
+		PLAYER_SPAWNPOINT(255, 255, 255), 
+		ITEM_FEATHER(255, 0, 255), 
+		ITEM_GOLD_COIN(255, 255, 0);
 
 		private int color;
 
