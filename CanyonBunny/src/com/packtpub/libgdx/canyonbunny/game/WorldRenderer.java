@@ -26,21 +26,14 @@ public class WorldRenderer implements Disposable {
 	}
 
 	public void render() {
-		renderTestObjects();
+		renderWorld(batch);
 	}
 
-	private void renderTestObjects() {
-
+	private void renderWorld(SpriteBatch batch) {
 		worldController.cameraHelper.applyTo(camera);
-
 		batch.setProjectionMatrix(camera.combined);
-//		The SpriteBatch class offers two methods called begin() and end() . 
-//		These methods are used to start and end a new batch of drawing commands.
-//		Before any drawing command can be executed, it is mandatory to call begin() .
 		batch.begin();
-		for (Sprite sprite : worldController.testSprites) {
-			sprite.draw(batch);
-		}
+		worldController.level.render(batch);
 		batch.end();
 	}
 
