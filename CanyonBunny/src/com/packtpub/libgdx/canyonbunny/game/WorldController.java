@@ -15,6 +15,7 @@ import com.packtpub.libgdx.canyonbunny.util.Constants;
 
 public class WorldController extends InputAdapter {
 	private static final String TAG = WorldController.class.getName();
+
 	public CameraHelper cameraHelper;
 	public Level level;
 	public int lives;
@@ -27,12 +28,11 @@ public class WorldController extends InputAdapter {
 	private void init() {
 		Gdx.input.setInputProcessor(this);
 		cameraHelper = new CameraHelper();
-		// initTestObjects();
-		lives = Constants.LIVES_START;
 		initLevel();
 	}
 
 	private void initLevel() {
+		lives = Constants.LIVES_START;
 		score = 0;
 		level = new Level(Constants.LEVEL_01);
 	}
@@ -96,21 +96,5 @@ public class WorldController extends InputAdapter {
 		x += cameraHelper.getPosition().x;
 		y += cameraHelper.getPosition().y;
 		cameraHelper.setPosition(x, y);
-	}
-
-	private Pixmap createProceduralPixmap(int width, int height) {
-		// TODO Auto-generated method stub
-		Pixmap pixmap = new Pixmap(width, height, Format.RGBA8888);
-		// Fill square with red color at 50% opacity
-		pixmap.setColor(1, 0, 0, 0.5f);
-		pixmap.fill();
-		// Draw a yellow-colored X shape on square
-		pixmap.setColor(1, 1, 0, 1);
-		pixmap.drawLine(0, 0, width, height);
-		pixmap.drawLine(width, 0, 0, height);
-		// Draw a cyan-colored border around square
-		pixmap.setColor(0, 1, 1, 1);
-		pixmap.drawRectangle(0, 0, width, height);
-		return pixmap;
 	}
 }

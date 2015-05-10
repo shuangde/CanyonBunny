@@ -8,6 +8,8 @@ import com.badlogic.gdx.utils.Disposable;
 import com.packtpub.libgdx.canyonbunny.util.Constants;
 
 public class WorldRenderer implements Disposable {
+	private static final String TAG = WorldRenderer.class.getName();
+
 	private OrthographicCamera camera;
 	private OrthographicCamera cameraGUI;
 	private SpriteBatch batch;
@@ -35,6 +37,14 @@ public class WorldRenderer implements Disposable {
 	public void render() {
 		renderWorld(batch);
 		renderGui(batch);
+	}
+
+	private void renderWorld(SpriteBatch batch) {
+		worldController.cameraHelper.applyTo(camera);
+		batch.setProjectionMatrix(camera.combined);
+		batch.begin();
+		worldController.level.render(batch);
+		batch.end();
 	}
 
 	private void renderGui (SpriteBatch batch) {
@@ -91,14 +101,6 @@ public class WorldRenderer implements Disposable {
 		fpsFont.setColor(1, 1, 1, 1); // white
 	}
 
-
-	private void renderWorld(SpriteBatch batch) {
-		worldController.cameraHelper.applyTo(camera);
-		batch.setProjectionMatrix(camera.combined);
-		batch.begin();
-		worldController.level.render(batch);
-		batch.end();
-	}
 
 	public void resize(int width, int height) {
 		camera.viewportWidth = (Constants.VIEWPORT_HEIGHT / height) * width;
