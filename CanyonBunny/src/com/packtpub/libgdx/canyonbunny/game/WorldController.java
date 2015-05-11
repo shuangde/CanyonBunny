@@ -145,9 +145,9 @@ public class WorldController extends InputAdapter {
 	}
 
 	private void moveCamera(float x, float y) {
-		x += cameraHelper.getPosition().x;
-		y += cameraHelper.getPosition().y;
-		cameraHelper.setPosition(x, y);
+		float curX = cameraHelper.getPosition().x + x;
+		float curY = cameraHelper.getPosition().y + y;
+		cameraHelper.setPosition(curX, curY);
 	}
 
 	private void testCollisions() {
@@ -190,6 +190,14 @@ public class WorldController extends InputAdapter {
 		}
 	}
 
+	/**
+	 * This code handles collisions between the bunny head game object and a
+	 * rock game object and is called when a collision is detected. Then, the
+	 * bunny head game object is moved accordingly to prevent it from falling
+	 * through our platforms—the rock game objects.
+	 * <br>
+	 * Chinese: 处理兔子和地面的接触，当脚下有地面时不要让兔子一直掉下去
+	 */
 	private void onCollisionBunnyHeadWithRock(Rock rock) {
 		BunnyHead bunnyHead = level.bunnyHead;
 		float heightDifference = Math.abs(bunnyHead.position.y
