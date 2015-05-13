@@ -7,7 +7,7 @@ import com.badlogic.gdx.tools.imagepacker.TexturePacker2.Settings;
 
 public class Main {
 //	rebuildAtlas controls whether the atlas is rebuilt on startup or not by setting it to true or false .
-	private static boolean rebuildAtlas = false;
+	private static boolean rebuildAtlas = true;
 	private static boolean drawDebugOutline = false;
 
 	public static void main(String[] args) {
@@ -23,6 +23,9 @@ public class Main {
 			settings.debug = drawDebugOutline;
 			TexturePacker2.process(settings, "assets-raw/images",
 					"../CanyonBunny-android/assets/images", "canyonbunny.pack");
+			TexturePacker2.process(settings, "assets-raw/images-ui",
+					"../CanyonBunny-android/assets/images",
+					"canyonbunny-ui.pack");
 		}
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "CanyonBunny";
